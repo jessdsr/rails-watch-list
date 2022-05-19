@@ -9,6 +9,7 @@ class BookmarksController < ApplicationController
   def create
     @list = List.find(params[:list_id])
     @bookmark = Bookmark.new(bookmark_params)
+    # parce que belongs_to :list dans model bookmark on peut appeler la methode sur bookmark:
     @bookmark.list = @list
     if @bookmark.save
       redirect_to list_path(@list)
