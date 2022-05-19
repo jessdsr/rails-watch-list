@@ -1,1 +1,21 @@
 <h1>Welcome on: <%= @list.name %></h1>
+
+<div class="bookmarks">
+  <ul>
+    <% @list.bookmarks.each do |bookmark| %>
+    <li class="bookmark">
+      <p>
+        <%= bookmark.movie.title %>
+        <%= bookmark.movie.overview %>
+        <%= bookmark.comment %>
+        <br>
+      </p>
+    </li>
+    <% end %>
+  </ul>
+  <%= "Empty list" if @list.bookmarks.empty? %>
+</div>
+
+<%= link_to 'Add a movie', new_list_bookmark_path(@list) %>
+<br>
+<%= link_to 'Homepage', lists_path %>
