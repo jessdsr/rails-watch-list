@@ -1,6 +1,6 @@
 <%= simple_form_for [@list, @bookmark] do |f| %>
   <%= f.input :comment %>
   <!-- par convention, simple_form_for retire le _id-->
-  <%= f.association :movie %>
-  <%= f.button :submit, class: "btn btn-primary" %>
+  <%= f.association :movie, collection: Movie.order(:title), prompt: "Pick a movie", disabled: @list.movies.map(&:id) %>
+  <%= f.button :submit, class: "btn btn-outline-primary" %>
 <% end %>
