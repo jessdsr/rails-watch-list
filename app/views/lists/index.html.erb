@@ -1,8 +1,18 @@
-<h1>Display all the lists!</h1>
-<ul>
-  <% @lists.each do |list| %>
-    <li><%= link_to list.name, list_path(list) %></li>
-  <% end %>
-</ul>
-<br>
+<div class="banner" style="background-image: url(<%= asset_url("banner.jpg") %>);">
+  <div class="container text-center">
+    <h1>Display all the lists!</h1>
+  </div>
+</div>
+<div class="container py-3">
+  <div class="cards">
+    <% @lists.each do |list| %>
+      <%= link_to list_path(list) do %>
+        <div class="card" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)), url(<%= cl_image_path list.photo.key, height: 300, width: 400, crop: :fill %>)">
+          <%= list.name %>
+        </div>
+      <% end %>
+    <% end %>
+  </div>
+</div>
+
 <%= link_to "Create a list", new_list_path %>
